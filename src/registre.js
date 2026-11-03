@@ -73,5 +73,11 @@ export function creerObservation(saisie) {
 // Ajoute la saisie au carnet si elle est valide (verifierObservation, puis creerObservation).
 // Renvoie les erreurs : [] si l'observation a été ajoutée ; sinon les messages, et rien n'est ajouté.
 export function ajouterObservation(observations, saisie) {
- 
+  const erreur = verifierObservation(saisie,observations);
+if (erreur.length>0) {
+  return erreur;
+}
+const observation = creerObservation(saisie);
+observations.push(observation);
+return [];
 }
