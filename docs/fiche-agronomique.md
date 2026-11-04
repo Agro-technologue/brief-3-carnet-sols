@@ -17,4 +17,4 @@
 -Le carnet ne donne pas de recommandations sur les engrais à utiliser, car son role est uniquement d'enregistrer et de consulter les observations du sol.
 
 Sources : SUJET.md et données enregistrées dans donnees/observations.json
- · Relu par le coach le : ✏️
+ · Relu par le coach le : 

@@ -10,6 +10,18 @@ import { SEUIL_PH_A_DISCUTER, compterParTexture, phMinMax, pointsADiscuter } fro
 
 const FICHIER_DONNEES = 'donnees/observations.json';
 
+//--------------Afichages--------------
+
+function afficherAccueil(){
+  console.log('====================================================');
+  console.log('       Fderme pédagogique    ');
+  console.log('====================================================');
+}
+
+
+
+
+
 
 
 async function main() {
