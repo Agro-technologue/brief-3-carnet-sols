@@ -76,7 +76,46 @@ function lister(observations) {
   console.log(listerObservations(observations));
 }
 
+//Choix 3 : recherche par poiunt, parcelle ou texture.
+async function rechercher(observations) {
+  console.log('--- Rechercher ---');
+  console.log('1. Par point (identifiant)');
+  console.log('2. Par parcelle');
+  console.log('3. Les observations d\'une texture' );
+  const sonChoix = await demander ('Votre choix : ');
+  if (sonChoix === null) return;
 
+  switch(sonChoix) {
+    case '1' : {
+      const saisie = await demander ('Point : ');
+      if (saisie === null) return;
+      const id = saisie.toUpperCase();
+      const observation = trouverParId(observations, id);
+      console.log(observation === undefined ? `Observation ${id} introuvable.` : formaterObservation(observation));
+      break;
+    }
+    case '2' : {
+      const saisie = await demander ('Parcelle : ');
+      if (saisie === null) return;
+      const parcelle = saisie.toUpperCase();
+      const trouve = filtrerParParcelle(observations, parcelle);
+      console.log(`${trouve.length} observation(s) sur la parcelle ${parcelle} :`);
+      console.log(listerObservations(trouve));
+      break;
+    }
+    case '3' : {
+      const saisie = await demander('Texture : ');
+      if (saisie === null) return;
+      const texture = saisie.toLowerCase();
+      const trouve = filtrerParTexture(observations, texture);
+      console.log(`${trouve.length} observation(s) de texture ${texture} :`);
+      console.log(listerObservations(trouve));
+      break;
+    }
+    default :
+    console.log('Choix inconnu : retour au menu.');
+  }
+}
 
 
 
