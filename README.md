@@ -26,9 +26,9 @@ Sous PowerShell, si `npm` est bloqué : `npm.cmd test`.
 - [x] Données lues et enregistrées dans `donnees/observations.json`
 - [x] Ajouter une observation, saisies invalides refusées sans arrêter le programme
 - [x] Lister les observations, message si le carnet est vide
-- [ ] Rechercher par point ou par parcelle ; filtrer par texture
-- [ ] Trier par pH
-- [ ] Synthèse : pH minimum et maximum, nombre par texture, points à discuter (pH < 5,5)
+- [x] Rechercher par point ou par parcelle ; filtrer par texture
+- [x] Trier par pH
+- [x] Synthèse : pH minimum et maximum, nombre par texture, points à discuter (pH < 5,5)
 - [ ] Bonus : supprimer et modifier une observation (choix 6 et 7)
 - [ ] Bonus : tri par pH décroissant, texture la plus fréquente
 
