@@ -35,9 +35,9 @@ function afficherMenu() {
 async function ajouter(observations) {
   console.log('---- Ajouter une observaztion ----');
 
-  const id = await demander('Point observé(ex. S11) : s11');
+  const id = await demander('Point observé(ex. S11) : ');
   if(id === null) return;
-  const parcelle = await demander('Parcelle (ex. P1) : p6')
+  const parcelle = await demander('Parcelle (ex. P1) : ')
   if(parcelle === null) return;
   const  texture = await demander('Texture (${TEXTURES.join(',')}) : ');
   if(texture === null) return;
@@ -157,64 +157,66 @@ function synthèse(observations) {
   console.log('Cest points ne sont pas un diagnostique de fertilisation : ils servent à préparer l\'échange avec le coach.');
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ------------- Programme principal -------------
 
 async function main() {
   ouvrirSaisie();
-  console.log("À compléter : écrivez le menu dans app.js (fiches/3-ajouter-lister.md).");
+  afficherAccueil();
+
+  // Changement des données : si ça échoue, on continue avec un carnet vide.
+  let observations = [];
+  try {
+    observations = await chargerJson(FICHIER_DONNEES);
+    console.log(`${observations.length} observation(s) chargée(s) depuis ${FICHIER_DONNEES}.`); 
+  }catch (erreur) {
+    console.log(`Impossible de lire ${FICHIER_DONNEES} : ${erreur.message}. Le carnet démarre vide.`);
+    observations = [];
+  }
+
+  let continuer = true;
+  while (continuer) {
+    afficherMenu();
+    const choix = await demander('Votre choix : ');
+
+    // Saisie fermée (Ctr+c) : on quitte.
+    if (choix === null) {
+      break;
+    }
+
+    try{
+      switch (choix) {
+        case '1' : 
+          await ajouter(observations);
+          break;
+        case '2' :
+          lister(observations);
+          break;
+        case '3' : 
+          await rechercher(observations);
+          break;
+        case '4' :
+          await trier(observations);
+          break;
+        case '5' :
+          synthèse(observations);
+          break;
+        case '0' :
+          console.log('Au revoir !');
+          continuer = false;
+          break;
+        defrault:
+          console.log("Le choix", choix, "Tapez un chiffre du menu");
+      }
+    }catch (erreur) {
+      // Aucune erreur n'arrete le programme : le menu revient toujours.
+      if (String(erreur.message).startsWith('TODO')){
+        console.log(`A compléter : ${erreur.message}`);
+      }else{
+        console.log(`Erreur inattendue : ${erreur.message}`);
+      }
+    }
+  }
+
   fermerSaisie();
 }
 
