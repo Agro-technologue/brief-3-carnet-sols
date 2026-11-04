@@ -29,6 +29,78 @@ function afficherMenu() {
   console.log('0. Quitter');
 }
 
+//-------------Actions-------------
+
+//Choix 1 : poser les cinq questions, vérifier, ajouter, enregistrer.
+async function ajouter(observation) {
+  console.log('---- Ajouter une observaztion ----');
+
+  const id = await demander('Point observé(ex. S11) : s11');
+  if(id === null) return;
+  const parcelle = await demander('Parcelle (ex. P1) : p6')
+  if(parcelle === null) return;
+  const  texture = await demander('Texture (${TEXTURES.join(',')}) : ');
+  if(texture === null) return;
+  const pH = await demander('pH (nombre de 0 à 14, sans unité, virgule accptée) : ');
+  if (pH === null) return;
+  const etatHumide = await demander(`État d'humidité (${HUMIDITES.join(',')}) : `);
+  if (etatHumide === null) return;
+
+  
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
