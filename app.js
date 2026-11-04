@@ -32,7 +32,7 @@ function afficherMenu() {
 //-------------Actions-------------
 
 //Choix 1 : poser les cinq questions, vérifier, ajouter, enregistrer.
-async function ajouter(observation) {
+async function ajouter(observations) {
   console.log('---- Ajouter une observaztion ----');
 
   const id = await demander('Point observé(ex. S11) : s11');
@@ -46,10 +46,37 @@ async function ajouter(observation) {
   const etatHumide = await demander(`État d'humidité (${HUMIDITES.join(',')}) : `);
   if (etatHumide === null) return;
 
-  
+  // Normalisation avant vérification : majuscule pour le point et la parcelle,
+  // minuscule pour la texture et l'état d'humidité, le pH reste tel quel.
+  const saisie = {
+    id: id.toUpperCase(),
+    parcelle: parcelle.toUpperCase(),
+    texture: texture.toLowerCase(),
+    pH,
+    etatHumidite: etatHumide.toLowerCase(),
+  };
 
+  const erreurs = ajouterObservation(observations, saisie);
+  if (erreurs.length > 0) {
+    console.log('Observation refusée :');
+    for (const erreur of erreurs) {
+      console.log(` -${erreur}`);
+    }
+    console.log(`Le carnet compte toujours ${observations.length} observation(s).`);
+    return;
+  }
 
+  await enregistrerJson(FICHIER_DONNEES, observations);
+  console.log(`observation ${saisie.id} ajoutée. Le carnet compte ${observations.length} observation.`)
 }
+
+//Choix 2 : lister.
+function lister(observations) {
+  console.log(`---- Liste des observations (${observations.length}) ----`);
+  console.log(listerObservations(observations));
+}
+
+
 
 
 
