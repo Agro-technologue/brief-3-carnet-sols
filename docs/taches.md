@@ -12,6 +12,6 @@
 | Tests par un camarade ; mes propres tests                   |          |           |          |
 | Fiche agronomique ; README ; documents                      |          |           |          |
 | Dépôt cloné et lancé ailleurs ; démonstration répétée       |  04-11-2026        |           |          |
-| Bonus                                                       |          |           |          |
+| Bonus                                                       |  04-11-2026        |           |          |
 
 **Blocages** (le message exact, ce que j'ai essayé, la solution) : ✏️
