@@ -11,7 +11,7 @@
 | Fiche 5 : synthèse ; choix 5                                |          |           |          |
 | Tests par un camarade ; mes propres tests                   |          |           |          |
 | Fiche agronomique ; README ; documents                      |          |           |          |
-| Dépôt cloné et lancé ailleurs ; démonstration répétée       |          |           |          |
+| Dépôt cloné et lancé ailleurs ; démonstration répétée       |  04-11-2026        |           |          |
 | Bonus                                                       |          |           |          |
 
 **Blocages** (le message exact, ce que j'ai essayé, la solution) : ✏️

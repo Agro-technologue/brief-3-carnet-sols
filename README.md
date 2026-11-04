@@ -4,7 +4,14 @@
 
 ## Contexte
 
-✏️ *En cinq à huit phrases : qui utilise l'outil (son métier, son geste professionnel), son besoin, ce qu'il saisit, ce que le programme lui affiche, ce que l'outil ne fait pas.*
+✏️ *Nous devons créer une application <<Carnet d'observartion des sols>>, qui sera utiliser par un assistant de terrain Agritech. Sur le terrain,cet assistant observera différents points de sol et relèvera leur (id), la parcelle concernée, la texture du sol, le pH et l'etat d'humidité.
+Son besoin est d'enregistrer les informations, de les retrouver facilement et de répérer les valeurs qui doivent etre vérifiées avec le coach agronome.
+Au démarrage du programme, un menu s'affichera pour permettre à l'utilisateur de choisir une action : 
+1.Ajouter des observations.
+2.Lister les observations enregistrées.
+3.Rechercher des observation par point, parcelle ou texture.
+4.Trier les informations par pH.
+5.Afficher une synthèse des observations.*
 
 ## Prérequis et lancement
 

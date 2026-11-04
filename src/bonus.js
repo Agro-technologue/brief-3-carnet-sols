@@ -26,7 +26,34 @@ export function supprimerObservation(observations, id) {
 // Erreurs : identifiant introuvable · champ 'id' (non modifiable) · champ absent de CHAMPS_MODIFIABLES
 //           · valeur refusée par les règles de l'ajout.
 export function modifierObservation(observations, id, champ, valeur) {
-  throw new Error('TODO Bonus : coder modifierObservation dans src/bonus.js');
+  const erreurs = [];
+
+  const observation = trouverParId(observations,id);
+
+   if(!observation){
+    erreurs.push("Identifiant introuvable");
+    return erreurs;
+  }
+  if(champ === 'id'){
+    erreurs.push("champ id n'est pas modifiable");
+    return erreurs;
+  }
+  if(!CHAMPS_MODIFIABLES.includes(champ)){
+    erreurs.push("champ absent dans champs modifiables autorisés");
+    return erreurs;
+  }
+  let valeurSaisie = valeur ;
+  if(champ==='pH'){
+    valeurSaisie=(versNombre(valeur));
+    if(isNaN(valeurSaisie) || valeurSaisie<0 || valeurSaisie>14){
+      erreurs.push("la valeur du pH doit etre un nombre compris entre 0 et 14");
+    }
+  }
+  if(erreurs.length>0){
+    return erreurs;
+  }
+  observation[champ]=valeurSaisie;
+  return[];
 }
 
 // Renvoie une COPIE triée par pH décroissant. Le tableau reçu ne doit pas changer d'ordre.

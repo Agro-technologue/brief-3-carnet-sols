@@ -12,4 +12,4 @@
 
 **Listes de valeurs autorisées** : sableux, limoneux ou argileux. S01, S02, S03. sec, intermédiaire et humide.
 
-**Sources** : donnees/observations.json
+**Sources** : donnees/observations.json et fiche dictionnaire de notre groupe d'expert 
