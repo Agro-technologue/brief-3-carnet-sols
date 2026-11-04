@@ -14,7 +14,7 @@
 
 **Deux limites du carnet** (une seule observation par point, classes d'exercice, pas de moment du relevé, seuil de 5,5 simple repère…) : 
 -Les états d'humidité sont classés en trois catégories(sec, intermédiaire et humide) et ne donne pas une mesure précise de la quantité d'eau présente dans le sol.
--
+-Le carnet ne donne pas de recommandations sur les engrais à utiliser, car son role est uniquement d'enregistrer et de consulter les observations du sol.
 
 Sources : SUJET.md et données enregistrées dans donnees/observations.json
  · Relu par le coach le : ✏️
