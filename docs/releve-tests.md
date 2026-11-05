@@ -18,13 +18,13 @@
 
 **Essais dans le menu** : un ajout valide (encore là après redémarrage), chaque règle refusée, une recherche introuvable, chaque tri, la synthèse, un choix inconnu.
 
-|       Action            |                  Attendu                    |        Obtenu                |      Testeur  |
-| ---                     | ---                                         | ---                          | ---           |
-|   ajout valide          | l'observation doit etre ajoutée             |                              |TOURE Richmond|
-|chaque règle refusée     |     Aucune observation enregistrée          |                              |TOURE Richmond |
-|une recherche introuvable|       introuvable                           |                              |TOURE Richmond|
-|chaque tri (pH croissant)|         tri succès                          |                              |TOURE Richmond|
-|la synthèse              | affichage des statistiqyues de l'observation|                              |TOURE Richmond|
-|un choix inconnu         |        Aucune observation enregistrée       |                              |TOURE Richmond|
+|       Action            |                  Attendu                    |        Obtenu                    |      Testeur   |
+| ---                     | ---                                         | ---                              | ---            |
+|   ajout valide          | l'observation doit etre ajoutée             |         observation ajoutée      |Agro-technologue|
+|chaque règle refusée     |     Aucune observation enregistrée          |   Aucune observation enregistrée |Agro-technologue|
+|une recherche introuvable|       introuvable                           |    Observation S30 introuvable   |Agro-technologue|
+|chaque tri (pH croissant)|         tri succès                          |            tri succès            |Agro-technologue|
+|la synthèse              | affichage des statistiques de l'observation | succès affichage des statistiques|Agro-technologue|
+|un choix inconnu         |        Aucune observation enregistrée       |   aucune observation enregistrée |Agro-technologue|
 
 **Sur un autre poste** (`git clone`, `node app.js`, `npm test`, en suivant le README) : ✏️
