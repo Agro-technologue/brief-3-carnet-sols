@@ -39,7 +39,7 @@ async function ajouter(observations) {
   if(id === null) return;
   const parcelle = await demander('Parcelle (ex. P1) : ')
   if(parcelle === null) return;
-  const  texture = await demander('Texture (${TEXTURES.join(',')}) : ');
+  const  texture = await demander(`texture (${TEXTURES.join(',')}): `);
   if(texture === null) return;
   const pH = await demander('pH (nombre de 0 à 14, sans unité, virgule accptée) : ');
   if (pH === null) return;

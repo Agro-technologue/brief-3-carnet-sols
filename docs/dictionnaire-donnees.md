@@ -10,6 +10,8 @@
 |       `pH`        |    Mesure du pH du sol observé   |  nombre  |     compris entre 0 et 14    |   -   |    8    |
 | `etat d'Humidite` |        Etat d'humidité du sol    |  texte   | sec, intermédiaire ou humide |   -   | humide  |
 
-**Listes de valeurs autorisées** : sableux, limoneux ou argileux. S01, S02, S03. sec, intermédiaire et humide.
+**Listes de valeurs autorisées** : sableux, limoneux ou argileux. 
+id : S01, S02, S03. 
+etat d'Humidité : sec intermédiaire et humide.
 
 **Sources** : donnees/observations.json et fiche dictionnaire de notre groupe d'expert 

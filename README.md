@@ -53,4 +53,4 @@ Sous PowerShell, si `npm` est bloqué : `npm.cmd test`.
 
 ## Auteur
 
-✏️ *Yedanh Guy Richmond TOURE, compte GitHub. Entraide : avec qui, sur quoi.*
+✏️ *Yedanh Guy Richmond TOURE, RichmondToure. Entraide : KONE Fatoumata,N'Diamoi Angaman , sur quoi.*
