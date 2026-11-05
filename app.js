@@ -7,6 +7,7 @@ import { chargerJson, enregistrerJson } from './src/stockage.js';
 import { HUMIDITES, TEXTURES, ajouterObservation, formaterObservation, listerObservations, trouverParId } from './src/registre.js';
 import { filtrerParParcelle, filtrerParTexture, trierParPh } from './src/recherche.js';
 import { SEUIL_PH_A_DISCUTER, compterParTexture, phMinMax, pointsADiscuter } from './src/synthese.js';
+import { CHAMPS_MODIFIABLES, modifierObservation } from './src/bonus.js';
 
 const FICHIER_DONNEES = 'donnees/observations.json';
 
@@ -26,6 +27,8 @@ function afficherMenu() {
   console.log('3. Rechercher (point, parcelle, texture');
   console.log('4. Trier par pH');
   console.log('5. Synthèse des observations');
+  console.log('6. Supprimer une observation');
+  console.log('7. Modifier une observation');
   console.log('0. Quitter');
 }
 
@@ -147,6 +150,16 @@ function synthèse(observations) {
   for (const [texture, nombre] of Object.entries(compterParTexture(observations))) {
     console.log(`  ${texture} : ${nombre}`);
   }
+
+  // Bonus : juste après les lignes par texture.
+const frequente = textureLaOlusFréquente(observation);
+if (frequente === null) {
+  console.log('Texture la plus frequente : aucune donnée');
+}else{
+  console.log(`Texture la plus fréquente : ${frequente.texture} (${frequente.nombre} observation(s))`);
+}
+
+
   const aDiscuter = pointsADiscuter(observations, SEUIL_PH_A_DISCUTER);
   console.log(`Point à discuter avec le coach (pH <${SEUIL_PH_A_DISCUTER}) : ${aDiscuter.length}`);
   for (const observation of aDiscuter) {
@@ -156,6 +169,53 @@ function synthèse(observations) {
   console.log('Rappels : le pH est sans unité. Aucune moyenne de pH n\'est calculée (échelle logarithmique).');
   console.log('Cest points ne sont pas un diagnostique de fertilisation : ils servent à préparer l\'échange avec le coach.');
 }
+
+// Choix 6 (bonus) : supprimer une observation. 
+async function supprimer(observations) {
+  const saisie = await demander ('Identifiant : ');
+  if (saisie === null) return;
+  const id = saisie.toUpperCase();
+
+  const supprimee = supprimerObservation(observations, id);
+  if (supprimee === undefined) {
+    console.log(`Observation ${id} introuvable.`);
+    return;
+
+  }
+
+  await enregistrerJson(FICHIER_DONNEES, observations);
+  console.log(`Observation ${id} supprimée. Le carnet compte ${observations.length} observation(s).`);
+} 
+
+//Choix 7 (bonus): modifier un champ d'une observation.
+async function modifier(observations){
+  const saisieId = await demander ('Nouvelle valeur : ');
+  if (valeurSaisie === null) return;
+  const id = saisieId.toUpperCase();
+
+  const champ = await demander(`Champ à modifier (${CHAMPS_MODIFIABLES.join(',')}) : `);
+  if (champ === null) return;
+  const valeurSaisie = await demander ('Nouvelle valeur : ');
+  if (valeurSaisie === null) return;
+
+  //Meme normalisation qu'à l'ajout. Le nom du champ reste tel quel ("pH" est sensible à la casse).
+  let valeur = valeurSaisie;
+  if (champ === 'parcelle') valeur = valeurSaisie.toUpperCase();
+  if (champ === 'texture' || champ === 'etatHumidite') valeur = valeurSaisie.toLowerCase();
+
+  const erreurs = modifierObservation(observations, id, champ, valeur);
+  if (erreurs.length >0) {
+    console.log('Modification refusée :');
+    for ( const erreur of erreurs) {
+      console.log(`  -${erreur}`);
+
+    }
+    return;
+  }
+  await enregistrerJson(FICHIER_DONNEES, observations);
+  console.log(`Observation ${id} modifiée.`);
+} 
+
 
 // ------------- Programme principal -------------
 
@@ -200,11 +260,17 @@ async function main() {
         case '5' :
           synthèse(observations);
           break;
+        case '6' :
+          await supprimer(observations);
+          break;
+        case '7' : 
+          await modifier(observations);
+          break; 
         case '0' :
           console.log('Au revoir !');
           continuer = false;
           break;
-        defrault:
+        default:
           console.log("Le choix", choix, "Tapez un chiffre du menu");
       }
     }catch (erreur) {

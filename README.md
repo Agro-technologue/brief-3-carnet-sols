@@ -45,7 +45,10 @@ Sous PowerShell, si `npm` est bloqué : `npm.cmd test`.
 
 ## Limites
 
-✏️ *Au moins trois. Par exemple : le carnet repère des valeurs à discuter, mais ne produit aucun diagnostic de fertilisation.*
+-Le carnet n'enregistre pas le moment de l'observation.
+-La texture et l'etat d'humidité ne sont pas mesurables.
+-Le carnet ne donne pas de localisation précise ou coordonées.
+-Le carnet ne note pas la culture présente, ni la météo.
 
 ## Documents
 

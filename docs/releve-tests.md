@@ -18,13 +18,13 @@
 
 **Essais dans le menu** : un ajout valide (encore là après redémarrage), chaque règle refusée, une recherche introuvable, chaque tri, la synthèse, un choix inconnu.
 
-|       Action            |                  Attendu                    | Obtenu                       |      Testeur  |
+|       Action            |                  Attendu                    |        Obtenu                |      Testeur  |
 | ---                     | ---                                         | ---                          | ---           |
-|   ajout valide          | l'observation doit etre ajoutée             | l'observation ajoutée        | TOURE Richmond|
-|chaque règle refusée     |     Aucune observation enregistrée          |Aucune observation enregistrée|TOURE Richmond |
-|une recherche introuvable|       introuvable                           |Observation A01 introuvable |TOURE Richmond |
-|chaque tri (pH croissant)|         tri succès                          | tri réussi | TOURE Richmond |
-|la synthèse              | affichage des statistiqyues de l'observation| affichage réussi |TOURE Richmond|
-|un choix inconnu         |        Aucune observation enregistrée       |Aucune observation enregistrée |TOURE Richmond|
+|   ajout valide          | l'observation doit etre ajoutée             |                              |TOURE Richmond|
+|chaque règle refusée     |     Aucune observation enregistrée          |                              |TOURE Richmond |
+|une recherche introuvable|       introuvable                           |                              |TOURE Richmond|
+|chaque tri (pH croissant)|         tri succès                          |                              |TOURE Richmond|
+|la synthèse              | affichage des statistiqyues de l'observation|                              |TOURE Richmond|
+|un choix inconnu         |        Aucune observation enregistrée       |                              |TOURE Richmond|
 
 **Sur un autre poste** (`git clone`, `node app.js`, `npm test`, en suivant le README) : ✏️
